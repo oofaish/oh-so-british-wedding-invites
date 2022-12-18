@@ -147,7 +147,7 @@ const Home: NextPage = () => {
                                 ) : null}
                             </Box>
                             <Typography sx={{ fontFamily: 'Comfortaa', letterSpacing: '1px' }} variant="h6">
-                                Where to stay
+                                Planning your trip
                             </Typography>
                             <Box sx={{ m: 3, textAlign: 'center' }}>
                                 {content.hotels.map((item) => (
