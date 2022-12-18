@@ -11,30 +11,21 @@ const UserCard = ({ guest }: Props) => (
         <Card variant="outlined" sx={{ p: 2, width: '60vw', mb: 4, backgroundColor: '#f8f8ff' }}>
             <CardContent>
                 <Typography variant="h5" component="div">
-                    Name: {guest.fullName}
+                    Name: {guest.names}
                 </Typography>
                 <Typography sx={{ mt: 1.5 }} color="text.secondary">
                     Email Address: {guest.email}
                 </Typography>
                 <Typography sx={{ mt: 1.5 }} color="text.secondary">
+                    Phone number: {guest.phoneNumber}
+                </Typography>
+
+                <Typography sx={{ mt: 1.5 }} color="text.secondary">
                     Attending: {guest.attending[0].toUpperCase() + guest.attending.substring(1)}
                 </Typography>
                 <Typography sx={{ mt: 1.5 }} color="text.secondary">
-                    Bringing a partner: {guest.partner ? 'Yes' : 'No'}
+                    Expected Party Count: {guest.expectedPartyCount}
                 </Typography>
-                {guest.partnerName && (
-                    <Typography sx={{ mt: 1.5 }} color="text.secondary">
-                        Partner name: {guest.partnerName}
-                    </Typography>
-                )}
-                <Typography sx={{ mt: 1.5 }} color="text.secondary">
-                    Bringing children: {guest.children ? 'Yes' : 'No'}
-                </Typography>
-                {guest.children && (
-                    <Typography sx={{ mt: 1.5 }} color="text.secondary">
-                        Number of children: {guest.numberOfChildren}
-                    </Typography>
-                )}
                 {guest.diet && (
                     <Typography sx={{ mt: 1.5 }} color="text.secondary">
                         Dietry requirements: {guest.diet}

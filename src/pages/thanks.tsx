@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
-import { Container, Paper, Typography } from '@mui/material';
+import { Container, Button, Paper, Typography } from '@mui/material';
 import { useLayoutEffect } from 'react';
 import type { NextPage } from 'next';
 
@@ -18,47 +18,68 @@ const Thanks: NextPage = () => {
         },
     });
 
-    const { attending, fullName } = useAppState();
+    const { attending, names } = useAppState();
 
     useLayoutEffect(() => {
-        if (!fullName) router.replace('/');
-    }, [fullName, router]);
+        if (!names) router.replace('/');
+    }, [names, router]);
 
     return (
-        <Container component="main" sx={{ ...flex, minHeight: '90vh' }}>
-            {!session && <div className={spin.spin} />}
-            {session && (
-                <Container
-                    maxWidth="sm"
-                    sx={{
-                        ...flex,
-                        flexDirection: 'column',
-                        justifyContent: 'flex-start',
-                        mt: 3,
-                        mb: 3,
-                    }}
-                >
-                    <Paper
-                        elevation={3}
+        <>
+            <img
+                src="https://res.cloudinary.com/dmvrc4esd/image/upload/v1671272562/cycling_towards_a_castle.webp"
+                alt="Couple cycling towards a castle"
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    zIndex: 0,
+                    width: '100%',
+                }}
+            />
+            <Container component="main" sx={{ ...flex, minHeight: '90vh', zIndex: 1 }}>
+                {!session && <div className={spin.spin} />}
+                {session && (
+                    <Container
+                        maxWidth="sm"
                         sx={{
-                            flexGrow: 1,
-                            width: '100%',
-                            display: 'flex',
+                            ...flex,
                             flexDirection: 'column',
                             justifyContent: 'flex-start',
-                            pl: 3,
-                            pr: 3,
-                            pb: 3,
-                            backgroundColor: '#f8f8ff',
+                            mt: 3,
+                            mb: 3,
                         }}
                     >
-                        <Typography sx={{ m: 3, fontSize: '18px' }} variant="h5">
-                            <div dangerouslySetInnerHTML={{ __html: thanksText(attending, fullName) }} />
-                        </Typography>
-                    </Paper>
-                </Container>
-            )}
-        </Container>
+                        <Paper
+                            elevation={3}
+                            sx={{
+                                flexGrow: 1,
+                                width: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'flex-start',
+                                pl: 3,
+                                pr: 3,
+                                pb: 3,
+                                backgroundColor: '#f8f8ff',
+                            }}
+                        >
+                            <Typography sx={{ m: 3, fontSize: '18px' }} variant="h5">
+                                <div dangerouslySetInnerHTML={{ __html: thanksText(attending, names) }} />
+                            </Typography>
+                        </Paper>
+                        <Button
+                            id="user-form-link"
+                            onClick={() => router.push('/')}
+                            variant="contained"
+                            sx={{ m: 3, color: 'white' }}
+                        >
+                            Go Back
+                        </Button>
+                    </Container>
+                )}
+            </Container>
+        </>
     );
 };
 

@@ -1,33 +1,20 @@
-/* eslint-disable prettier/prettier */
-exports.checkResponse = (rsvp) => {
+export function checkResponse(rsvp) {
     let response;
     if (rsvp.attending === 'yes') {
         response = `
-            You received another response to the wedding! ${rsvp.fullName} is going to attend!
+            You received another response to the wedding! ${rsvp.names} is going to attend!
+            They are bringing ${rsvp.expectedPartyCount} total number of people.
+            
+            Email: ${rsvp.email}
 
-            ${rsvp.partner ? `They are bringing a plus one called ${rsvp.partnerName}.` : `They are coming alone.`}
-
-            ${rsvp.children
-                ? `They are bringing ${rsvp.numberOfChildren} children.`
-                : `They are not bringing any children.`
-            }
-        `;
-    } else if (rsvp.attending === 'maybe') {
-        response = `
-            You received another response to the wedding! ${rsvp.fullName} is a maybe for now.
-
-            ${rsvp.partner ? `If they do come they are bringing a plus one called ${rsvp.partnerName}.` : `If they do come they are coming alone.`}
-
-            ${rsvp.children
-                ? `If they do come they are bringing ${rsvp.numberOfChildren} children.`
-                : `If they do come they are not bringing any children.`
-            }
+            Phone number: ${rsvp.phoneNumber}
+            
+            ${rsvp.diet ? `Dietery requirements: ${rsvp.diet}` : ''}
         `;
     } else if (rsvp.attending === 'no') {
         response = `
-            You received another response to the wedding. ${rsvp.fullName} is not able to attend.
+            You received another response to the wedding. ${rsvp.names} is not able to attend.
         `;
     }
     return response;
 }
-

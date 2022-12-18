@@ -23,7 +23,7 @@ const App = (props: MyAppProps) => {
         <CacheProvider value={emotionCache}>
             <Head>
                 <meta name="viewport" content="initial-scale=1, width=device-width" />
-                <title>Caro & Richie</title>
+                <title>{process.env.NEXT_PUBLIC_COUPLES_NAME}</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <ThemeProvider theme={theme}>

@@ -1,40 +1,26 @@
 /* eslint-disable prettier/prettier */
-export default (attending, fullName) =>
+export default (attending, names) =>
     attending === 'yes'
         ? `
-            Dear ${fullName},<br><br>
+            Dear ${names},<br><br>
 
-            Thanks for RSVP-ing. We are delighted you can make it to our wedding celebration in Berlin on 27th August 2022.<br><br>
-            
-            We will be sending out an email in the coming months with confirmation of the day’s itinerary and other details such as dress code.<br><br>
-            
+            Thank you for RSVP-ing. We are delighted you can make it to our wedding celebration in ${process.env.WEDDING_LOCATION_AND_DATE}.<br><br>
+            If you have any questions, please don't hesitate to reach out to us on email or phone.<br><br>
             Looking forward to spending time with you!<br><br>
-            
-            Best Wishes<br>
-            Caro and Richie
+            Best Wishes<br><br>
+            ${process.env.NEXT_PUBLIC_COUPLES_NAME}
         `
         : attending === 'no'
-            ? `
-                Dear ${fullName},<br><br>
+        ? `
+                Dear ${names},<br><br>
 
-                Thanks for RSVP-ing. We are sorry to hear you cannot make it to our wedding celebration in Berlin on 27th August 2022.<br><br>
+                Thank you for RSVP-ing. We are sorry to hear you cannot make our wedding.<br><br>
 
-                We are looking into live-streaming the ceremony and will keep you posted. <br><br>
+                Hopefully we can get together at another point to catch up.<br><br>
 
-                Best Wishes<br>
-                Caro and Richie
+                Best Wishes<br><br>
+                ${process.env.NEXT_PUBLIC_COUPLES_NAME}
             `
-            :
-            `
-                Dear ${fullName}, <br><br> 
-
-                Thanks for RSVP-ing. We are glad to hear you are thinking about attending our wedding celebration in Berlin on 27th August 2022.<br><br> 
-                
-                We have added your name to our mailing list and will send you the final details of the event in the coming months.<br><br>
-
-                If at a later date you decide you can definitely attend, please get in touch to let us know.<br><br>
-
-                Best Wishes<br>
-                Caro and Richie
-
+        : `
+                Sorry what?
             `;

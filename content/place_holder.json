@@ -1,0 +1,24 @@
+{
+    "title": "",
+    "firstDate": "",
+    "secondDate": "",
+    "saturday": [
+        ["Saturday Event", "bold"]
+    ],
+    "sunday": [
+        ["Sunday Event", "regular"]
+    ],
+    "hotels": [
+        ""
+    ],
+    "rsvpDate": "Date",
+    "venue1": [
+        "Venue1", 
+        "GoogleMap"
+    ],
+    "venue2": [
+        "Venue2",
+        "GoogleMap"
+    ],
+    "footnote": ""
+}
