@@ -47,7 +47,7 @@ export default function SignIn() {
                     }}
                 >
                     <img
-                        src="https://res.cloudinary.com/dmvrc4esd/image/upload/v1671272562/cycling_towards_a_castle.webp"
+                        src={process.env.NEXT_PUBLIC_MAIN_IMAGE}
                         alt="Couple cycling towards a castle"
                         style={{
                             maxWidth: '700px',
