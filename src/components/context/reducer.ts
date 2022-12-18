@@ -1,13 +1,11 @@
 import { Action, RSVP } from './models';
 
 export const initialState: RSVP = {
-    fullName: '',
+    names: '',
     email: '',
-    attending: 'maybe',
-    partner: false,
-    partnerName: '',
-    children: false,
-    numberOfChildren: 0,
+    phoneNumber: '',
+    attending: 'no',
+    expectedPartyCount: 0,
     diet: '',
 };
 

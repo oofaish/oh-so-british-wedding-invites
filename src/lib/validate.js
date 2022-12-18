@@ -1,9 +1,10 @@
 export default (data) => {
-    if (data.fullName === '') {
+    if (data.names === '') {
         return 'Remember your name!';
     }
-    if (data.email === '') {
-        return 'Remember your email!';
+    if (data.phoneNumber === '') {
+        return 'Remember your phone number!';
     }
+
     return false;
 };

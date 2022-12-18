@@ -35,30 +35,42 @@ export default function SignIn() {
 
     return (
         <>
-            <img
-                src="https://res.cloudinary.com/dtirfwiy8/image/upload/q_10/v1643969151/bridge_otlmkp.webp"
-                alt="Berlin bridge over water"
-                style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    zIndex: 0,
-                    width: '100%',
-                }}
-            />
             <Container component="div" maxWidth="xs" sx={{ position: 'relative', zIndex: 1, overflow: 'hidden' }}>
+                <Box
+                    sx={{
+                        height: '50%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        mt: 3,
+                        mb: 3,
+                    }}
+                >
+                    <img
+                        src="https://res.cloudinary.com/dmvrc4esd/image/upload/v1671272562/cycling_towards_a_castle.webp"
+                        alt="Couple cycling towards a castle"
+                        style={{
+                            maxWidth: '700px',
+                            width: '100%',
+                        }}
+                    />
+                </Box>
                 <Paper variant="outlined" sx={{ p: '20px', borderRadius: '10px' }}>
                     <Box
                         sx={{
-                            marginTop: 2,
+                            marginTop: 1,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
+                        <Typography component="h1" variant="h6" sx={{ mb: 1, textAlign: 'center' }}>
+                            We are getting married!
+                        </Typography>
+
                         {!error ? (
-                            <Typography component="h1" variant="h5" sx={{ textAlign: 'center' }}>
-                                Please log in to R.S.V.P
+                            <Typography component="h1" variant="h6" sx={{ textAlign: 'center', fontSize: '.7em' }}>
+                                Please log in to view our wedding day details and RSVP
                             </Typography>
                         ) : (
                             <Typography component="h1" variant="h5">

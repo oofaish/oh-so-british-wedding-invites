@@ -22,5 +22,9 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# website content
+content/my_copy.json
+
 # vercel
 .vercel
+/.vscode

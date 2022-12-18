@@ -1,7 +1,6 @@
 import { getSession } from 'next-auth/react';
-import aws from 'aws-sdk';
 import type { NextApiRequest, NextApiResponse } from 'next';
-
+import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import { validateIncomingValues } from '@/lib/validateIncomingValues';
 import connectToDatabase from '@/lib/mongodb';
 import { checkResponse } from '@/lib/ses';
@@ -12,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!session) return res.status(401);
 
     const error = validateIncomingValues(req.body);
-
+    req.body.date = new Date();
     if (error) return res.json({ error });
 
     const { db } = await connectToDatabase();
@@ -21,32 +20,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
         let errorSesCheck;
-        await new aws.SES({
-            accessKeyId: process.env.AWS_KEY,
-            secretAccessKey: process.env.AWS_SECRET,
-            region: 'eu-central-1',
-        })
-            .sendEmail({
-                Source: `Wedding Invitation Response <${process.env.ADMIN_EMAIL}>`,
-                Destination: {
-                    ToAddresses: [process.env.USER_EMAIL as string],
-                },
-                Message: {
-                    Body: {
-                        Text: {
-                            Data: checkResponse(req.body) as string,
-                        },
-                    },
-                    Subject: {
-                        Data: `Wedding response from ${req.body.fullName}`,
-                    },
-                },
-            })
-            .promise()
-            .catch((err) => {
-                console.log('err sending email', err.message);
-                errorSesCheck = err.message;
-            });
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
+
+        const msg: MailDataRequired = {
+            to: process.env.USER_EMAIL,
+            from: process.env.ADMIN_EMAIL as string,
+            subject: `Wedding response from ${req.body.names}`,
+            text: checkResponse(req.body) as string,
+            html: checkResponse(req.body) as string,
+        };
+
+        // eslint-disable-next-line no-shadow
+        const sgResults = await sgMail.send(msg).catch((error) => {
+            console.log('err sending email', error.message);
+            errorSesCheck = error.message;
+        });
+        console.log(sgResults);
         if (errorSesCheck) {
             return res.json({ success: 'false', errorSesCheck });
         }

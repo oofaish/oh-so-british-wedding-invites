@@ -14,7 +14,7 @@ export default NextAuth({
                     return null;
                 }
                 if (
-                    credentials.username === process.env.NEXT_AUTH_USERNAME &&
+                    credentials.username.toLowerCase() === process.env.NEXT_AUTH_USERNAME &&
                     credentials.password === process.env.NEXT_AUTH_PASSWORD
                 ) {
                     return {

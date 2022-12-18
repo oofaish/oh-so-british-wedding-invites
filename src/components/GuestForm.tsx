@@ -28,7 +28,6 @@ const GuestForm = () => {
                 body: JSON.stringify(state),
             });
             const data = await res.json();
-            console.log('data: ', data);
             if (data.error) {
                 setSending(false);
                 setError(data.error);
@@ -53,7 +52,7 @@ const GuestForm = () => {
                     variant={error ? 'h5' : 'h3'}
                     align="center"
                 >
-                    {error || 'R.S.V.P'}
+                    {error || 'RSVP'}
                 </Typography>
                 <>
                     <FormFields />
