@@ -158,7 +158,7 @@ const Home: NextPage = () => {
                                 Gifts
                             </Typography>
                             <Box sx={{ m: 3, textAlign: 'center' }}>
-                                <p>Your presence at our wedding is the perfect gift to us.</p>
+                                <p>Your presence at our wedding is the perfect gift to us. {content.gift_note}</p>
                             </Box>
                             <Box sx={{ mb: 2, textAlign: 'center' }}>
                                 <p style={{ fontSize: '0.7em', fontStyle: 'italic' }}>{content.footnote}</p>

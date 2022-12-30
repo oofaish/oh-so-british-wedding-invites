@@ -27,4 +27,5 @@ export interface Content {
     venue1: Array<string>;
     venue2: Array<string>;
     footnote: string;
+    gift_note: string;
 }
