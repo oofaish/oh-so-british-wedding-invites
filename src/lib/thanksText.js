@@ -4,7 +4,7 @@ export default (attending, names) =>
         ? `
             Dear ${names},<br><br>
 
-            Thank you for RSVP-ing. We are delighted you can make it to our wedding celebration in ${process.env.WEDDING_LOCATION_AND_DATE}.<br><br>
+            Thank you for RSVP-ing. We are delighted you can make it to our wedding celebration in ${process.env.NEXT_PUBLIC_WEDDING_LOCATION_AND_DATE}.<br><br>
             If you have any questions, please don't hesitate to reach out to us on email or phone.<br><br>
             Looking forward to spending time with you!<br><br>
             Best Wishes<br><br>
